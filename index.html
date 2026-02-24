@@ -1,117 +1,183 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 24.8.1.2 (Linux)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="00:00:00"/>
-	<style type="text/css">
-		@page { size: 8.27in 11.69in; margin: 0.79in }
-		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
-		pre { background: transparent }
-		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
-		pre.cjk { font-family: "NSimSun", monospace; font-size: 10pt }
-		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
-	</style>
-</head>
-<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-&lt;title&gt;Engagement Invitation&lt;/title&gt;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engagement Invitation</title>
 
-&lt;style&gt;
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
 body {
-margin: 0;
-font-family: 'Georgia', serif;
-background: #ffffff;
-text-align: center;
-color: #444;
+    margin: 0;
+    text-align: center;
+    color: #4b2e2e;   /* Elegant dark brown */
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.25)),
+        url('background.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-.hero {
-padding: 120px 20px 60px 20px;
-background: linear-gradient(to bottom, #ffffff, #f7f7f7);
+/* Floral frame overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('floral.png') no-repeat center;
+    background-size: cover;
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 70px 20px;
+    animation: fadeIn 1.8s ease-in-out;
+}
+
+.verse {
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #3e2a2a;
 }
 
 h1 {
-font-size: 40px;
-letter-spacing: 3px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 52px;
+    margin: 10px 0;
+}
+
+.subheading {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.invite-text {
+    max-width: 750px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 40px;
 }
 
 .names {
-font-size: 28px;
-margin-top: 20px;
-line-height: 1.6;
+    font-family: 'Great Vibes', cursive;
+    font-size: 46px;
+    margin: 25px 0;
 }
 
 .details {
-background: #fafafa;
-margin: 40px auto;
-padding: 35px;
-border-radius: 15px;
-width: 90%;
-max-width: 500px;
-box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    background: rgba(255,255,255,0.95);
+    color: #5a3e36;
+    padding: 40px 30px;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.details p {
+    margin: 15px 0;
 }
 
 .btn {
-display: inline-block;
-margin-top: 25px;
-padding: 12px 28px;
-background: #d4af37;
-color: white;
-text-decoration: none;
-border-radius: 30px;
-font-size: 16px;
-transition: 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: #b76e79;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
 }
 
 .btn:hover {
-background: #b8962e;
+    background: #9c5b63;
+    transform: scale(1.05);
+}
+
+.parents {
+    margin-top: 50px;
+    font-family: 'Playfair Display', serif;
 }
 
 .footer {
-margin-top: 60px;
-padding: 20px;
-font-size: 14px;
-color: #888;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #3e2a2a;
 }
-&lt;/style&gt;
-&lt;/head&gt;
 
-&lt;body&gt;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
 
-&lt;div class=&quot;hero&quot;&gt;
-&lt;h1&gt;Engagement Ceremony&lt;/h1&gt;
-&lt;div class=&quot;names&quot;&gt;
-Dr. Prudhvi Raj &lt;br&gt; &amp; &lt;br&gt; Manasa
-&lt;/div&gt;
-&lt;/div&gt;
+<body>
 
-&lt;div class=&quot;details&quot;&gt;
-&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; 14th March 2026&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 10:00 AM onwards&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Venue:&lt;/strong&gt;&lt;br&gt;
-Kingston Park&lt;br&gt;
-Nallagandla Bypass Road,&lt;br&gt;
-Serilingampally, Hyderabad&lt;/p&gt;
+<div class="container">
 
-&lt;a class=&quot;btn&quot;
-href=&quot;https://www.google.com/maps/search/?api=1&amp;query=Kingston+Park+Nallagandla+Hyderabad&quot;
-target=&quot;_blank&quot;&gt;
-View on Google Maps
-&lt;/a&gt;
-&lt;/div&gt;
+<div class="verse">
+"Marriage is honourable among all." – Hebrews 13:4
+</div>
 
-&lt;div class=&quot;footer&quot;&gt;
-With the blessings of our parents ❤️ &lt;br&gt;
-Lunch follows
-&lt;/div&gt;
+<h1>Panga's</h1>
+<div class="subheading">Engagement Invitation</div>
 
-&lt;/body&gt;
-&lt;/html&gt;</pre>
+<div class="invite-text">
+We cordially request the honour of your gracious presence  
+with family & friends to bless the couple on the auspicious occasion  
+of the engagement of our beloved son
+</div>
+
+<div class="names">
+Dr. Prudhvi Raj <br> with <br> Manasa
+</div>
+
+<div class="details">
+<p><strong>Date:</strong> Saturday, 14th March 2026</p>
+<p><strong>Time:</strong> 10:00 A.M. onwards</p>
+<p><strong>Venue:</strong><br>
+Kingston Park<br>
+Nallagandla Bypass Road,<br>
+Beside HP Petrol Pump,<br>
+Serilingampally, Hyderabad</p>
+
+<a class="btn"
+href="https://www.google.com/maps/search/?api=1&query=Kingston+Park+Nallagandla+Hyderabad"
+target="_blank">
+View Location
+</a>
+
+<p><strong>Lunch Follows...</strong></p>
+</div>
+
+<div class="parents">
+Yours lovingly,<br><br>
+<strong>Sri Panga Kesava Rao</strong><br>
+<strong>Smt. Panga Rohini Devi</strong>
+</div>
+
+<div class="footer">
+With best compliments from Near & Dear ❤️
+</div>
+
+</div>
+
 </body>
 </html>
