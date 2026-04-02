@@ -1,174 +1,342 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Engagement Invitation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panga Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>
-body {
-    margin: 0;
-    text-align: center;
-    color: #4b2e2e;
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    background-color: #fdfaf6;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Floral frame background only */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('floral.png') no-repeat center;
-    background-size: cover;
-    opacity: 0.95;
-    pointer-events: none;
-    z-index: -1;
-}
+    body {
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      height: 100vh;
+      background: #000;
+    }
 
-.container {
-    padding: 70px 20px;
-    animation: fadeIn 1.8s ease-in-out;
-}
+    .bg {
+      position: fixed;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      z-index: -2;
+      transform: scale(1.05);
+    }
 
-.verse {
-    font-style: italic;
-    font-size: 14px;
-    margin-bottom: 20px;
-    color: #3e2a2a;
-}
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(30, 15, 15, 0.45), rgba(20, 10, 10, 0.68));
+      z-index: -1;
+    }
 
-h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 52px;
-    margin: 10px 0;
-}
+    .scene {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 25px;
+      opacity: 0;
+      transform: scale(1.08);
+      transition: all 1.6s ease;
+      pointer-events: none;
+    }
 
-.subheading {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-}
+    .scene.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
 
-.invite-text {
-    max-width: 750px;
-    margin: auto;
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 40px;
-}
+    .glass {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 35px 25px;
+      max-width: 900px;
+      width: 92%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
 
-.names {
-    font-family: 'Great Vibes', cursive;
-    font-size: 46px;
-    margin: 25px 0;
-}
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      color: #fff6ea;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
 
-.details {
-    background: rgba(255,255,255,0.95);
-    color: #5a3e36;
-    padding: 40px 30px;
-    border-radius: 20px;
-    max-width: 500px;
-    margin: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.10);
-}
+    .subtitle {
+      font-size: 18px;
+      color: #f6dfc7;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
 
-.details p {
-    margin: 15px 0;
-}
+    .verse {
+      font-size: 26px;
+      color: #f7e8d7;
+      font-style: italic;
+      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.7;
+    }
 
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 28px;
-    background: #b76e79;
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: 0.3s;
-}
+    .verse-ref {
+      font-size: 16px;
+      color: #e7d2bc;
+      margin-top: 10px;
+    }
 
-.btn:hover {
-    background: #9c5b63;
-    transform: scale(1.05);
-}
+    .names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 76px;
+      color: #ffd9b0;
+      line-height: 1.2;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
 
-.parents {
-    margin-top: 50px;
-    font-family: 'Playfair Display', serif;
-}
+    .with {
+      font-size: 24px;
+      color: #f5e3d0;
+      margin: 12px 0;
+      font-style: italic;
+    }
 
-.footer {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #3e2a2a;
-}
+    .details {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: #fff1df;
+      margin-bottom: 10px;
+    }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-</style>
+    .small {
+      font-size: 20px;
+      color: #f1ddca;
+      line-height: 1.8;
+    }
+
+    .bless {
+      font-size: 22px;
+      color: #f7e5d0;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .divider {
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #f4d2a8, transparent);
+      margin: 18px auto;
+      border-radius: 2px;
+    }
+
+    .final-card h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 46px;
+      margin-bottom: 10px;
+      color: #fff5e9;
+    }
+
+    .final-card .main-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 64px;
+      color: #ffd7ab;
+      line-height: 1.3;
+      margin: 10px 0 20px;
+    }
+
+    .final-card .section {
+      margin-top: 16px;
+      font-size: 20px;
+      line-height: 1.9;
+      color: #f8e6d4;
+    }
+
+    .final-card .label {
+      display: block;
+      font-size: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e8ccb0;
+      margin-bottom: 4px;
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      font-size: 16px;
+      color: #f2dcc5;
+      font-style: italic;
+    }
+
+    .map-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #d4a373, #b08968);
+      color: white;
+      text-decoration: none;
+      border-radius: 40px;
+      font-size: 16px;
+      font-weight: 500;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+    }
+
+    .map-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #c08b5c, #9c6f52);
+    }
+
+    @media (max-width: 768px) {
+      .title { font-size: 34px; }
+      .names { font-size: 52px; }
+      .details { font-size: 28px; }
+      .small { font-size: 17px; }
+      .verse { font-size: 20px; }
+      .final-card h1 { font-size: 30px; }
+      .final-card .main-names { font-size: 46px; }
+      .glass { padding: 28px 18px; }
+      .map-btn { font-size: 15px; padding: 12px 24px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <div class="bg"></div>
+  <div class="overlay"></div>
 
-<div class="verse">
-"Marriage is honourable among all." – Hebrews 13:4
-</div>
+  <!-- Scene 1 -->
+  <section class="scene active">
+    <div class="glass">
+      <div class="divider"></div>
+      <div class="title">Panga’s Wedding Invitation</div>
+      <div class="subtitle">With Love & Blessings</div>
+    </div>
+  </section>
 
-<h1>Panga's</h1>
-<div class="subheading">Engagement Invitation</div>
+  <!-- Scene 2 Bible Verse -->
+  <section class="scene">
+    <div class="glass">
+      <div class="subtitle">Bible Verse</div>
+      <div class="verse">“This is from the Lord”</div>
+      <div class="verse-ref">Genesis 24:50</div>
+    </div>
+  </section>
 
-<div class="invite-text">
-We cordially request the honour of your gracious presence  
-with family & friends to bless the couple on the auspicious occasion  
-of the engagement of our beloved son
-</div>
+  <!-- Scene 3 -->
+  <section class="scene">
+    <div class="glass">
+      <div class="subtitle">Holy Matrimony</div>
+      <div class="names">Dr. Prudhvi Raj</div>
+      <div class="with">with</div>
+      <div class="names">Manasa</div>
+    </div>
+  </section>
 
-<div class="names">
-Dr. Prudhvi Raj <br> with <br> Manasa
-</div>
+  <!-- Scene 4 -->
+  <section class="scene">
+    <div class="glass">
+      <div class="subtitle">Wedding Date & Time</div>
+      <div class="details">Wednesday, 15th April 2026</div>
+      <div class="small">at 09:30 AM</div>
+    </div>
+  </section>
 
-<div class="details">
-<p><strong>Date:</strong> Saturday, 14th March 2026</p>
-<p><strong>Time:</strong> 10:00 A.M. onwards</p>
-<p><strong>Venue:</strong><br>
-Kingston Park<br>
-Nallagandla Bypass Road,<br>
-Beside HP Petrol Pump,<br>
-Serilingampally, Hyderabad</p>
+  <!-- Scene 5 -->
+  <section class="scene">
+    <div class="glass">
+      <div class="subtitle">Venue</div>
+      <div class="details">Meghana Conventions</div>
+      <div class="small">Jammu Junction,<br>Navasannapeta, Srikakulam</div>
+    </div>
+  </section>
 
-<a class="btn"
-href="https://www.google.com/maps/search/?api=1&query=Kingston+Park+Nallagandla+Hyderabad"
-target="_blank">
-View Location
-</a>
+  <!-- Scene 6 -->
+  <section class="scene">
+    <div class="glass">
+      <div class="bless">With blessings from</div>
+      <div class="names" style="font-size:58px;">Sri Panga Keshav Rao</div>
+      <div class="with">&</div>
+      <div class="names" style="font-size:58px;">Smt. Panga Rohini Devi</div>
+    </div>
+  </section>
 
-<p><strong>Lunch Follows...</strong></p>
-</div>
+  <!-- Scene 7 Final Full Card -->
+  <section class="scene final-scene">
+    <div class="glass final-card">
+      <div class="subtitle">Wedding Invitation</div>
+      <h1>Panga’s Wedding Invitation</h1>
 
-<div class="parents">
-Yours lovingly,<br><br>
-<strong>Sri Panga Kesava Rao</strong><br>
-<strong>Smt. Panga Rohini Devi</strong>
-</div>
+      <div class="verse">“This is from the Lord”</div>
+      <div class="verse-ref">Genesis 24:50</div>
 
-<div class="footer">
-With best compliments from Near & Dear ❤️
-</div>
+      <div class="divider"></div>
 
-</div>
+      <div class="main-names">
+        Dr. Prudhvi Raj <br> & <br> Manasa
+      </div>
+
+      <div class="section">
+        <span class="label">Holy Matrimony</span>
+        Wednesday, 15th April 2026 <br>
+        at 09:30 AM
+      </div>
+
+      <div class="section">
+        <span class="label">Venue</span>
+        Meghana Conventions <br>
+        Jammu Junction, Navasannapeta, Srikakulam
+      </div>
+
+      <div class="section">
+        <span class="label">With Blessings From</span>
+        Sri Panga Keshav Rao <br>
+        & <br>
+        Smt. Panga Rohini Devi
+      </div>
+
+      <a 
+        class="map-btn" 
+        href="https://www.google.com/maps/search/?api=1&query=Meghana+Conventions+Jammu+Junction+Navasannapeta+Srikakulam"
+        target="_blank"
+      >
+        📍 Open in Google Maps
+      </a>
+
+      <div class="footer-note">Lunch follows</div>
+    </div>
+  </section>
+
+  <script>
+    const scenes = document.querySelectorAll(".scene");
+    let index = 0;
+
+    function showNextScene() {
+      if (index < scenes.length - 1) {
+        scenes[index].classList.remove("active");
+        index++;
+        scenes[index].classList.add("active");
+      } else {
+        clearInterval(slideshow);
+      }
+    }
+
+    const slideshow = setInterval(showNextScene, 4000);
+  </script>
 
 </body>
 </html>
